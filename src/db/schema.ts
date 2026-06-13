@@ -1,5 +1,5 @@
 import {
-  pgTable, text, boolean, integer, jsonb, timestamp,
+  pgTable, text, boolean, integer, jsonb, timestamp, serial,
 } from 'drizzle-orm/pg-core';
 
 export type Member = {
@@ -35,6 +35,14 @@ export const careers = pgTable('careers', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+export const interviews = pgTable('interviews', {
+  id: serial('id').primaryKey(),
+  title: text('title').notNull(),
+  youtubeUrl: text('youtube_url').default('').notNull(),
+  sort: integer('sort').default(0).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
 export const settings = pgTable('settings', {
   key: text('key').primaryKey(),
   value: text('value').notNull(),
@@ -51,3 +59,4 @@ export const about = pgTable('about', {
 export type Category = typeof categories.$inferSelect;
 export type Career = typeof careers.$inferSelect;
 export type About = typeof about.$inferSelect;
+export type Interview = typeof interviews.$inferSelect;

@@ -27,6 +27,7 @@ export default async function DashboardPage() {
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <Link className="btn btn-primary" href="/admin/careers/new">➕ Add a new career</Link>
           <Link className="btn btn-ghost" href="/admin/categories/new">📁 Add a category</Link>
+          <Link className="btn btn-ghost" href="/admin/interviews/new">🎤 Add an interview</Link>
           <Link className="btn btn-ghost" href="/admin/theme">🎨 Change theme</Link>
           <Link className="btn btn-ghost" href="/" target="_blank">🌐 Preview the live site</Link>
         </div>

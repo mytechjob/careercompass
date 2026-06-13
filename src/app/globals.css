@@ -151,6 +151,18 @@ img { max-width: 100%; display: block; }
 .career-card .cc-meta span { display: flex; align-items: center; gap: 5px; }
 .badge-featured { position: absolute; top: 12px; right: 12px; background: var(--amber); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; letter-spacing: .03em; }
 
+/* ---------- Interviews ---------- */
+.interview-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: all .18s ease; }
+.interview-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.iv-frame { position: relative; aspect-ratio: 16 / 9; background: #0b1220; }
+.iv-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.iv-thumb { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #0b1220; display: block; }
+.iv-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s, filter .25s; }
+.iv-thumb:hover img { transform: scale(1.04); filter: brightness(.9); }
+.iv-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 62px; height: 62px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 1.3rem; padding-left: 4px; box-shadow: 0 6px 20px rgba(0,0,0,.35); transition: transform .15s, background .15s; }
+.iv-thumb:hover .iv-play { transform: translate(-50%, -50%) scale(1.08); background: var(--primary-600); }
+.iv-title { padding: 14px 18px; font-weight: 600; color: var(--navy); }
+
 /* ---------- Career detail ---------- */
 .detail-hero { background: var(--hero-grad); padding: 40px 0 48px; }
 .breadcrumb { font-size: .88rem; color: var(--muted); margin-bottom: 18px; }

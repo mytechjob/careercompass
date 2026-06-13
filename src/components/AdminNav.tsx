@@ -7,6 +7,7 @@ const items = [
   { href: '/admin', label: 'Dashboard', icon: '📊', exact: true },
   { href: '/admin/careers', label: 'Careers', icon: '💼' },
   { href: '/admin/categories', label: 'Categories', icon: '📁' },
+  { href: '/admin/interviews', label: 'Interviews', icon: '🎤' },
   { href: '/admin/about', label: 'About Page', icon: '🎀' },
   { href: '/admin/theme', label: 'Theme', icon: '🎨' },
 ];

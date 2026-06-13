@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
-import { careers, categories, about, settings } from '@/db/schema';
+import { careers, categories, about, settings, interviews } from '@/db/schema';
 import type { Member } from '@/db/schema';
 import { checkPassword, createSession, destroySession } from '@/lib/auth';
 import { slugify } from '@/lib/slug';
@@ -149,6 +149,30 @@ export async function saveAboutAction(formData: FormData) {
 
   revalidateSite();
   redirect('/admin/about');
+}
+
+// ---------- Interviews ----------
+export async function saveInterviewAction(formData: FormData) {
+  const existingId = str(formData, 'id');
+  const title = str(formData, 'title');
+  const youtubeUrl = str(formData, 'youtubeUrl');
+  if (!title) redirect('/admin/interviews');
+
+  if (existingId) {
+    await db.update(interviews).set({ title, youtubeUrl }).where(eq(interviews.id, Number(existingId)));
+  } else {
+    await db.insert(interviews).values({ title, youtubeUrl, sort: 0 });
+  }
+
+  revalidateSite();
+  redirect('/admin/interviews');
+}
+
+export async function deleteInterviewAction(formData: FormData) {
+  const id = str(formData, 'id');
+  if (id) await db.delete(interviews).where(eq(interviews.id, Number(id)));
+  revalidateSite();
+  redirect('/admin/interviews');
 }
 
 // ---------- Theme ----------

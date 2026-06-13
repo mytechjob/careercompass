@@ -15,7 +15,9 @@ About page, and switching the site's color theme.
 ## ✨ Features
 
 **Public website** (server-rendered for SEO — fast, shareable, Google-friendly)
-- **Home** with hero, search, and **featured careers** you choose
+- **Home** with hero, search, **interviews**, and **featured careers** you choose
+- **🎤 Interviews** — YouTube videos recorded by the scouts, shown on the home page between
+  the search bar and featured careers; the section hides itself when there are none
 - **Browse** with search + category filters
 - **Categories** that group related careers (e.g. Healthcare = doctors + nurses)
 - **Career pages** with: what they do · work environment · how to become one ·
@@ -28,6 +30,7 @@ About page, and switching the site's color theme.
 - Dashboard with stats and quick actions
 - Add / edit / delete **careers**, with a one-click ⭐ to feature on the home page
 - Add / edit / delete **categories**
+- Add / edit / delete **interviews** (just paste a YouTube link + title)
 - Edit the **About** page and team members
 - 🎨 **Theme switcher** — pick **Sky Blue**, **Mint Green**, or **Lavender**; the change
   applies to the whole site instantly for every visitor

@@ -2,17 +2,25 @@ import Link from 'next/link';
 import CareerCard from '@/components/CareerCard';
 import CategoryCard from '@/components/CategoryCard';
 import SearchBar from '@/components/SearchBar';
-import { getCategoriesWithCounts, getFeaturedCareers, getCareers } from '@/lib/data';
+import InterviewCard from '@/components/InterviewCard';
+import { getCategoriesWithCounts, getFeaturedCareers, getCareers, getInterviews } from '@/lib/data';
+import { youtubeId } from '@/lib/youtube';
 
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
-  const [featured, cats, all] = await Promise.all([
+  const [featured, cats, all, interviewRows] = await Promise.all([
     getFeaturedCareers(),
     getCategoriesWithCounts(),
     getCareers(),
+    getInterviews(),
   ]);
   const catName = (id: string | null) => cats.find((c) => c.id === id)?.name ?? 'General';
+
+  // Only show interviews that have a valid YouTube link.
+  const interviews = interviewRows
+    .map((iv) => ({ id: iv.id, title: iv.title, videoId: youtubeId(iv.youtubeUrl) }))
+    .filter((iv): iv is { id: number; title: string; videoId: string } => !!iv.videoId);
 
   return (
     <>
@@ -33,6 +41,24 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {interviews.length > 0 && (
+        <section className="section" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            <div className="section-head">
+              <div>
+                <h2>🎤 Interviews</h2>
+                <p>Conversations with real professionals, recorded by our Girl Scout team.</p>
+              </div>
+            </div>
+            <div className="card-grid">
+              {interviews.map((iv) => (
+                <InterviewCard key={iv.id} title={iv.title} videoId={iv.videoId} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section">
         <div className="container">

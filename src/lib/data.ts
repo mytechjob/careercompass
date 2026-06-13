@@ -1,6 +1,6 @@
 import 'server-only';
 import { db } from '@/db';
-import { careers, categories, about, settings } from '@/db/schema';
+import { careers, categories, about, settings, interviews } from '@/db/schema';
 import { and, asc, desc, eq, ilike, or, sql } from 'drizzle-orm';
 import { DEFAULT_THEME, isValidTheme, type ThemeId } from '@/lib/themes';
 import type { Career, Category, Member } from '@/db/schema';
@@ -78,6 +78,16 @@ export async function getAbout() {
       members: [] as Member[],
     }
   );
+}
+
+// ---------- Interviews ----------
+export async function getInterviews() {
+  return db.select().from(interviews).orderBy(asc(interviews.sort), desc(interviews.createdAt));
+}
+
+export async function getInterview(id: number) {
+  const rows = await db.select().from(interviews).where(eq(interviews.id, id)).limit(1);
+  return rows[0];
 }
 
 // ---------- Settings / Theme ----------
