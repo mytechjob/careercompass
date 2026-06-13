@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Compass — Admin CMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>" />
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN VIEW -->
+  <div id="loginView" class="login-wrap">
+    <form class="login-card" id="loginForm">
+      <div class="logo">🧭</div>
+      <h1>Career Compass CMS</h1>
+      <p>Sign in to manage careers and categories.</p>
+      <div class="form-group" style="text-align:left; margin-bottom:14px;">
+        <label for="pw">Password</label>
+        <input class="form-control" id="pw" type="password" placeholder="Enter admin password" autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <div id="loginError" style="color:#dc2626; font-size:.85rem; margin-top:12px; display:none;">
+        Incorrect password. Please try again.
+      </div>
+      <div class="login-hint">Prototype password: <strong>scouts2026</strong></div>
+    </form>
+  </div>
+
+  <!-- ADMIN SHELL -->
+  <div id="adminView" class="admin-shell" style="display:none;">
+    <aside class="admin-sidebar">
+      <a href="index.html" class="brand"><span class="logo">🧭</span> <span>Career Compass</span></a>
+      <nav class="admin-nav" id="adminNav">
+        <a data-view="dashboard" class="active">📊 <span>Dashboard</span></a>
+        <a data-view="careers">💼 <span>Careers</span></a>
+        <a data-view="categories">📁 <span>Categories</span></a>
+        <a data-view="about">🎀 <span>About Page</span></a>
+      </nav>
+      <div class="side-foot">
+        <a href="index.html" class="admin-nav" style="display:block; padding:11px 14px; border-radius:9px; color:#cdd9ec;">🌐 <span>View Site</span></a>
+        <a id="logoutBtn" class="admin-nav" style="display:block; padding:11px 14px; border-radius:9px; color:#cdd9ec; cursor:pointer;">🚪 <span>Log Out</span></a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="viewTitle">Dashboard</h1>
+        <div id="topbarActions"></div>
+      </div>
+      <div class="admin-content" id="adminContent"></div>
+    </main>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
