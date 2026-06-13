@@ -2,7 +2,7 @@ import Link from 'next/link';
 import CareerCard from '@/components/CareerCard';
 import CategoryCard from '@/components/CategoryCard';
 import SearchBar from '@/components/SearchBar';
-import InterviewCard from '@/components/InterviewCard';
+import InterviewCarousel from '@/components/InterviewCarousel';
 import { getCategoriesWithCounts, getFeaturedCareers, getCareers, getInterviews } from '@/lib/data';
 import { youtubeId } from '@/lib/youtube';
 
@@ -50,12 +50,11 @@ export default async function HomePage() {
                 <h2>🎤 Interviews</h2>
                 <p>Conversations with real professionals, recorded by our Girl Scout team.</p>
               </div>
+              {interviews.length > 3 && (
+                <Link href="/interviews" className="btn btn-ghost btn-sm">View all {interviews.length} →</Link>
+              )}
             </div>
-            <div className="card-grid">
-              {interviews.map((iv) => (
-                <InterviewCard key={iv.id} title={iv.title} videoId={iv.videoId} />
-              ))}
-            </div>
+            <InterviewCarousel items={interviews} />
           </div>
         </section>
       )}

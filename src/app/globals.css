@@ -163,6 +163,20 @@ img { max-width: 100%; display: block; }
 .iv-thumb:hover .iv-play { transform: translate(-50%, -50%) scale(1.08); background: var(--primary-600); }
 .iv-title { padding: 14px 18px; font-weight: 600; color: var(--navy); }
 
+/* Carousel (shown when more than 3 interviews) */
+.iv-carousel { position: relative; }
+.iv-track { display: flex; gap: 22px; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 4px 2px 14px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.iv-track::-webkit-scrollbar { height: 8px; }
+.iv-track::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.iv-track::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+.iv-slide { flex: 0 0 auto; width: 340px; max-width: 82vw; scroll-snap-align: start; }
+.iv-arrow { position: absolute; top: 38%; transform: translateY(-50%); z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--primary); font-size: 1.7rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow); display: grid; place-items: center; transition: all .15s ease; }
+.iv-arrow:hover:not(:disabled) { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-50%) scale(1.06); }
+.iv-arrow:disabled { opacity: 0; pointer-events: none; }
+.iv-arrow.left { left: -16px; }
+.iv-arrow.right { right: -16px; }
+@media (max-width: 600px) { .iv-arrow { display: none; } }
+
 /* ---------- Career detail ---------- */
 .detail-hero { background: var(--hero-grad); padding: 40px 0 48px; }
 .breadcrumb { font-size: .88rem; color: var(--muted); margin-bottom: 18px; }
